@@ -1,6 +1,5 @@
 import com.example.Feline;
 import com.example.Lion;
-import com.example.Predator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -32,21 +31,19 @@ public class LionTest {
         assertEquals(expectedResult, actualResult);
     }
 
-    @Mock
-    Predator predatorMock;
 
     @Test
     public void getFoodListPredatorMockListIsMatch() throws Exception {
-        Mockito.when(predatorMock.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
-        Lion lion = new Lion(predatorMock);
+        Mockito.when(felineMock.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
+        Lion lion = new Lion(felineMock);
         List<String> actualResult = lion.getFood();
         List<String> expectedResult = List.of("Животные", "Птицы", "Рыба");
         assertEquals(expectedResult, actualResult);
     }
     @Test
     public void getFoodPredatorListIsMatch() throws Exception {
-        Predator predator = new Feline();
-        Lion lion = new Lion(predator);
+        Feline feline = new Feline();
+        Lion lion = new Lion(feline);
         List<String> actualResult = lion.getFood();
         List<String> expectedResult = List.of("Животные", "Птицы", "Рыба");
         assertEquals(expectedResult, actualResult);
