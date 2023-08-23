@@ -14,18 +14,18 @@ public class LionTest {
     @Mock
     Feline felineMock;
     @Test
-    public void getKittensFelineMockReturn1() {
+    public void getKittensFelineMockReturn1() throws Exception {
         Mockito.when(felineMock.getKittens()).thenReturn(1);
-        Lion lion = new Lion(felineMock);
+        Lion lion = new Lion("Самец", felineMock);
         int actualResult = lion.getKittens();
         int expectedResult = 1;
         assertEquals(expectedResult, actualResult);
     }
 
     @Test
-    public void getKittensFelineReturn1() {
+    public void getKittensFelineReturn1() throws Exception {
         Feline feline = new Feline();
-        Lion lion = new Lion(feline);
+        Lion lion = new Lion("Самец", feline);
         int actualResult = lion.getKittens();
         int expectedResult = 1;
         assertEquals(expectedResult, actualResult);
@@ -35,7 +35,7 @@ public class LionTest {
     @Test
     public void getFoodListPredatorMockListIsMatch() throws Exception {
         Mockito.when(felineMock.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
-        Lion lion = new Lion(felineMock);
+        Lion lion = new Lion("Самец", felineMock);
         List<String> actualResult = lion.getFood();
         List<String> expectedResult = List.of("Животные", "Птицы", "Рыба");
         assertEquals(expectedResult, actualResult);
@@ -43,7 +43,7 @@ public class LionTest {
     @Test
     public void getFoodPredatorListIsMatch() throws Exception {
         Feline feline = new Feline();
-        Lion lion = new Lion(feline);
+        Lion lion = new Lion("Самец", feline);
         List<String> actualResult = lion.getFood();
         List<String> expectedResult = List.of("Животные", "Птицы", "Рыба");
         assertEquals(expectedResult, actualResult);
